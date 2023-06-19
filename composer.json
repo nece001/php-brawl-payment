@@ -16,6 +16,6 @@
     ],
     "require": {
         "php": ">=7.2",
-        "nece001/php-brawl": "^1.*"
+        "nece001/php-brawl": "^1.0"
     }
 }
