@@ -28,18 +28,19 @@ interface PaymentInterface
      *
      * @return void
      */
-    public function refund();
+    public function refund(ParameterAbstract $params);
 
     /**
      * 通知解析
      *
      * @Author nece001@163.com
-     * @DateTime 2023-06-19
+     * @DateTime 2023-06-20
      *
      * @param string $content
+     * @param array $headers
      * @param boolean $verify
      *
      * @return void
      */
-    public function notifyDecode($content, $verify = false);
+    public function notifyDecode($content, array $headers, $verify = false);
 }
