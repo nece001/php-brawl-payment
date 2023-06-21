@@ -16,9 +16,9 @@ interface PaymentInterface
      * @Author nece001@163.com
      * @DateTime 2023-06-19
      *
-     * @return void
+     * @return array
      */
-    public function prepay();
+    public function prepay(ParameterAbstract $params);
 
     /**
      * 退款
@@ -26,7 +26,7 @@ interface PaymentInterface
      * @Author nece001@163.com
      * @DateTime 2023-06-19
      *
-     * @return void
+     * @return \Nece\brawl\ResultAbstract
      */
     public function refund(ParameterAbstract $params);
 
@@ -42,5 +42,15 @@ interface PaymentInterface
      *
      * @return void
      */
-    public function notifyDecode($content, array $headers, $verify = false);
+    public function notifyDecode($content, array $headers, $verify = true);
+
+    /**
+     * 返回通知应答数据
+     *
+     * @author gjw
+     * @created 2023-05-24 17:36:47
+     *
+     * @return \Nece\Brawl\Payment\NotifyResponse
+     */
+    public function notifyResponse();
 }

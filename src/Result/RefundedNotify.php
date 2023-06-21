@@ -1,6 +1,6 @@
 <?php
 
-namespace Nece\Brawl\Payment;
+namespace Nece\Brawl\Payment\Result;
 
 /**
  * 退款通知消息（回调）
@@ -8,6 +8,6 @@ namespace Nece\Brawl\Payment;
  * @Author nece001@163.com
  * @DateTime 2023-06-19
  */
-class RefundNotifyResult
+class RefundedNotify
 {
 }

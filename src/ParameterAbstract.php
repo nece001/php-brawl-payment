@@ -2,46 +2,16 @@
 
 namespace Nece\Brawl\Payment;
 
+use Nece\Brawl\ParameterAbstract as BrawlParameterAbstract;
+
 /**
  * 参数基类
  *
  * @Author nece001@163.com
  * @DateTime 2023-06-20
  */
-abstract class ParameterAbstract
+abstract class ParameterAbstract extends BrawlParameterAbstract
 {
-    protected $params = array();
-    
-    /**
-     * 返回参数数组
-     *
-     * @Author nece001@163.com
-     * @DateTime 2023-06-20
-     *
-     * @return array
-     */
-    abstract public function toArray();
-
-    /**
-     * 获取参数值
-     *
-     * @Author nece001@163.com
-     * @DateTime 2023-06-20
-     *
-     * @param string $key
-     * @param mixed $default
-     *
-     * @return mixed
-     */
-    public function getParamValue($key, $default = null)
-    {
-        if (isset($this->params[$key])) {
-            return $this->params[$key];
-        }
-
-        return $default;
-    }
-
     /**
      * 过期时间
      * PHP的“date("Y-m-dTH:i:s+08:00")”方法出来的字符串中“T”前面多了“CS”，要替换成空
