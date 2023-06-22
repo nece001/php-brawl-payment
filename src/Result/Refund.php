@@ -140,7 +140,7 @@ class Refund extends ResultAbstract
      */
     public function setStatus($value)
     {
-        $this->params['create_time'] = $value;
+        $this->params['status'] = $value;
     }
 
     /**
@@ -173,10 +173,11 @@ class Refund extends ResultAbstract
      * @param integer $discount_refund 优惠退款金额 优惠退款金额<=退款金额，退款金额-代金券或立减优惠退款金额为现金，说明详见代金券或立减优惠，单位为分
      * @param string $currency 退款币种
      * @param integer $refund_fee 手续费退款金额，单位为分。
+     * @param array $from 退款出资账户及金额
      *
      * @return void
      */
-    public function setAmount(int $total, int $refund, int $payer_total, int $payer_refund, int $settlement_refund, int $settlement_total, int $discount_refund, $currency = 'CNY', int $refund_fee = 0)
+    public function setAmount(int $total, int $refund, int $payer_total, int $payer_refund, int $settlement_refund, int $settlement_total, int $discount_refund, $currency = 'CNY', int $refund_fee = 0, array $from = array())
     {
         $this->params['amount'] = array(
             'total' => $total,
@@ -187,6 +188,7 @@ class Refund extends ResultAbstract
             'settlement_total' => $settlement_total,
             'discount_refund' => $discount_refund,
             'refund_fee' => $refund_fee,
+            'from' => $from
         );
     }
 
@@ -199,11 +201,11 @@ class Refund extends ResultAbstract
      * @param string $account
      * @param integer $amount
      *
-     * @return void
+     * @return array
      */
-    public function setFrom($account, int $amount)
+    public function buildFrom($account, int $amount)
     {
-        $this->from = array(
+        return array(
             'account' => $account,
             'amount' => $amount,
         );
@@ -273,8 +275,6 @@ class Refund extends ResultAbstract
      */
     public function toArray()
     {
-        $params = $this->params;
-        $params['amount']['from'] = $this->from;
-        return $params;
+        return $this->params;
     }
 }

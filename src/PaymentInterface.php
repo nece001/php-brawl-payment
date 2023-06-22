@@ -53,4 +53,64 @@ interface PaymentInterface
      * @return \Nece\Brawl\Payment\NotifyResponse
      */
     public function notifyResponse();
+
+    /**
+     * 解析退款返回结果
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-21
+     *
+     * @param string $content 消息体
+     *
+     * @return \Nece\Brawl\Payment\ResultAbstract
+     */
+    public function parseRefundResult(string $content);
+
+    /**
+     * 是否支付成功回调通知
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-22
+     *
+     * @param array $event 事件内容数组
+     *
+     * @return boolean
+     */
+    public function paidNotifySuccess(array $event);
+
+    /**
+     * 是否退款成功回调通知
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-22
+     *
+     * @param array $event 事件内容数组
+     *
+     * @return void
+     */
+    public function refundedNotifySuccess(array $event);
+
+    /**
+     * 解析支付成功回调消息
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-22
+     *
+     * @param string $content 消息体
+     *
+     * @return \Nece\Brawl\Payment\Result\PaidNotify
+     */
+    public function parsePaidNotifyResult(string $content);
+
+    /**
+     * 解析退款回调消息
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-22
+     *
+     * @param string $content 消息体
+     *
+     * @return \Nece\Brawl\Payment\Result\RefundedNotify
+     */
+    public function parseRefundedNotifyResult(string $content);
 }
