@@ -15,6 +15,26 @@ use Nece\Brawl\ResultAbstract;
 interface PaymentInterface
 {
     /**
+     * 获取错误消息
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-20
+     *
+     * @return string
+     */
+    public function getErrorMessage(): string;
+
+    /**
+     * 获取原始响应
+     *
+     * @Author nece001@163.com
+     * @DateTime 2023-06-20
+     *
+     * @return string
+     */
+    public function getRawRespnose(): string;
+
+    /**
      * 预支付
      *
      * @Author nece001@163.com
